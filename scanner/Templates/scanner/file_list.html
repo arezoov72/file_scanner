@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remote Files</title>
+    <style>
+        .grey { color: grey; }
+    </style>
+</head>
+<body>
+    <h2>Remote Files</h2>
+    <ul>
+        {% for file in files %}
+        <li class="{% if file.exists_locally %}grey{% endif %}">
+            <a href="{{ file.path }}" target="_blank">{{ file.path }}</a>
+            {% if file.exists_locally %}
+                <span>- files exist</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
